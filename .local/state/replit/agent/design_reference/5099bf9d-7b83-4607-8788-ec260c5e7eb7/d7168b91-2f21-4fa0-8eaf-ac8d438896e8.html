@@ -1,0 +1,982 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Podder - AI/ML Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#0EA5E9',
+                        'secondary': '#06B6D4',
+                        'accent': '#8B5CF6',
+                        'success': '#10B981',
+                        'dark': '#0F172A',
+                        'dark-light': '#1E293B',
+                        'light': '#F8FAFC',
+                        'gray-custom': '#64748B'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-light font-sans text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md fixed w-full top-0 z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-dark">
+                    Deep<span class="text-primary">Podder</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-primary transition-colors duration-300">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary transition-colors duration-300">About</a>
+                    <a href="#projects" class="text-gray-700 hover:text-primary transition-colors duration-300">Projects</a>
+                    <a href="#skills" class="text-gray-700 hover:text-primary transition-colors duration-300">Skills</a>
+                    <a href="#education" class="text-gray-700 hover:text-primary transition-colors duration-300">Education</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary transition-colors duration-300">Contact</a>
+                </div>
+                
+                <!-- Admin Panel Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="toggleAdminPanel()" class="bg-accent hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                        <i class="fas fa-cog mr-2"></i>Admin
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-700 hover:text-primary">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary">About</a>
+                    <a href="#projects" class="text-gray-700 hover:text-primary">Projects</a>
+                    <a href="#skills" class="text-gray-700 hover:text-primary">Skills</a>
+                    <a href="#education" class="text-gray-700 hover:text-primary">Education</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary">Contact</a>
+                    <button onclick="toggleAdminPanel()" class="bg-accent text-white px-4 py-2 rounded-lg text-left">
+                        <i class="fas fa-cog mr-2"></i>Admin Panel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in">
+                <!-- Professional headshot placeholder -->
+                <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white text-4xl font-bold">
+                    DP
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold text-dark mb-6">
+                    Deep <span class="text-primary">Podder</span>
+                </h1>
+                
+                <h2 class="text-2xl md:text-3xl text-gray-custom mb-8 font-light">
+                    AI/ML Engineer & Data Science Enthusiast
+                </h2>
+                
+                <p class="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    BCA graduate (2026) passionate about transforming data into actionable insights. 
+                    Specialized in Machine Learning, Deep Learning, NLP, and Generative AI with hands-on experience in PyTorch and modern AI frameworks.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="#projects" class="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        View My Projects
+                    </a>
+                    <a href="#contact" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300">
+                        Get In Touch
+                    </a>
+                </div>
+                
+                <div class="flex justify-center space-x-6 mt-12">
+                    <a href="https://github.com/unknown-spec10" target="_blank" class="text-gray-600 hover:text-primary transition-colors duration-300 text-2xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/deeppodder2005" target="_blank" class="text-gray-600 hover:text-primary transition-colors duration-300 text-2xl">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:deeppodder57@gmail.com" class="text-gray-600 hover:text-primary transition-colors duration-300 text-2xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-6">About Me</h2>
+                <p class="text-xl text-gray-custom max-w-3xl mx-auto">
+                    Passionate about leveraging AI and machine learning to solve real-world problems
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-up">
+                    <!-- Professional workspace image -->
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Data science workspace with laptop showing code and charts" class="rounded-xl shadow-lg w-full h-auto" />
+                </div>
+                
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-bold text-dark mb-6">My Journey in Data Science</h3>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Currently pursuing Bachelor of Computer Applications (BCA) at Institute of Engineering and Management, Kolkata, 
+                        with an expected graduation in 2026. My journey in data science began with a fascination for how data can 
+                        tell stories and drive decision-making.
+                    </p>
+                    
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        I specialize in machine learning, deep learning with PyTorch, natural language processing, and generative AI. 
+                        My hands-on experience includes building end-to-end ML pipelines, developing RAG applications, 
+                        and creating intelligent systems that solve complex business problems.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-4 bg-primary/10 rounded-lg">
+                            <div class="text-3xl font-bold text-primary mb-2">15+</div>
+                            <div class="text-gray-600">Projects Completed</div>
+                        </div>
+                        <div class="text-center p-4 bg-secondary/10 rounded-lg">
+                            <div class="text-3xl font-bold text-secondary mb-2">3+</div>
+                            <div class="text-gray-600">Years of Learning</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-6">Featured Projects</h2>
+                <p class="text-xl text-gray-custom max-w-3xl mx-auto">
+                    Showcasing my expertise in AI/ML through practical applications and innovative solutions
+                </p>
+            </div>
+            
+            <!-- Project Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterProjects('all')" class="filter-btn active bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                    All Projects
+                </button>
+                <button onclick="filterProjects('ml')" class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-lg font-semibold border border-gray-300 hover:border-primary transition-all duration-300">
+                    Machine Learning
+                </button>
+                <button onclick="filterProjects('nlp')" class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-lg font-semibold border border-gray-300 hover:border-primary transition-all duration-300">
+                    NLP
+                </button>
+                <button onclick="filterProjects('ai')" class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-lg font-semibold border border-gray-300 hover:border-primary transition-all duration-300">
+                    Generative AI
+                </button>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @COMPONENT: ProjectCard [project data] -->
+                <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-category="nlp" data-mock="true">
+                    <div class="p-6">
+                        <!-- AI sentiment analysis visualization -->
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Twitter sentiment analysis dashboard with charts and data visualizations" class="w-full h-48 object-cover rounded-lg mb-6" />
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold">NLP</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-dark mb-3" data-bind="project.title">Twitter Sentiment Analysis</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-bind="project.description" data-mock="true">
+                            Analyzed tweet sentiments using BERT, PyTorch, and HuggingFace transformers. 
+                            Implemented advanced NLP techniques with TensorDataset, DataLoader, and AdamW optimizer.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">BERT</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">PyTorch</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">HuggingFace</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">NLP</span>
+                        </div>
+                        
+                        <button onclick="viewProjectDetails(1)" class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-colors duration-300" data-event="click:viewProject">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-category="ai" data-mock="true">
+                    <div class="p-6">
+                        <!-- RAG application interface -->
+                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Modern chat interface showing AI conversation with document retrieval" class="w-full h-48 object-cover rounded-lg mb-6" />
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-semibold">Generative AI</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-dark mb-3">RAG Application with Ollama</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-mock="true">
+                            Built a Retrieval-Augmented Generation app using LLaMA models and Ollama. 
+                            Developed intuitive Streamlit UI for intelligent query answering from custom datasets.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">LLaMA</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Ollama</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Streamlit</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">RAG</span>
+                        </div>
+                        
+                        <button onclick="viewProjectDetails(2)" class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-colors duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-category="ml" data-mock="true">
+                    <div class="p-6">
+                        <!-- Stock market data visualization -->
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Stock market charts and financial data analytics dashboard" class="w-full h-48 object-cover rounded-lg mb-6" />
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm font-semibold">Machine Learning</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-dark mb-3">Stock Recommender AI</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-mock="true">
+                            Created intelligent stock recommendation engine using real-time Phi Data. 
+                            Integrated ML models with agentic AI flows for actionable financial insights.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Phi Data</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Agentic AI</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">ML</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Finance</span>
+                        </div>
+                        
+                        <button onclick="viewProjectDetails(3)" class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-colors duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-category="ai" data-mock="true">
+                    <div class="p-6">
+                        <!-- Skill analysis dashboard -->
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Employee skill assessment dashboard with analytics and charts" class="w-full h-48 object-cover rounded-lg mb-6" />
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-semibold">Agentic AI</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-dark mb-3">Skill Gap Analyzer</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-mock="true">
+                            Designed intelligent tool for identifying employee skill gaps using Agentic AI and LangGraph. 
+                            Integrated advanced document parsing with PDFPlumber, pdf2image, and Tesseract OCR.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">LangGraph</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">PDFPlumber</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Tesseract</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">GLM4</span>
+                        </div>
+                        
+                        <button onclick="viewProjectDetails(4)" class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-colors duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-category="nlp" data-mock="true">
+                    <div class="p-6">
+                        <!-- Data privacy detection interface -->
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Data privacy dashboard showing document analysis and security features" class="w-full h-48 object-cover rounded-lg mb-6" />
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold">Data Privacy</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-mock="true">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-dark mb-3">PI/PHI Detector</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-mock="true">
+                            FastAPI-based privacy detection tool for identifying PII and PHI in Rally tickets. 
+                            Implemented automated data extraction with pyrally and Ollama-hosted LLMs for semantic analysis.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">FastAPI</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Pydantic</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">pyrally</span>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Ollama</span>
+                        </div>
+                        
+                        <button onclick="viewProjectDetails(5)" class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-colors duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: ProjectCard -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-6">Technical Skills</h2>
+                <p class="text-xl text-gray-custom max-w-3xl mx-auto">
+                    Comprehensive expertise across the data science and AI/ML technology stack
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Programming Languages -->
+                <div class="bg-gradient-to-br from-primary/5 to-primary/10 p-8 rounded-xl shadow-lg animate-slide-up">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-code text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-dark">Programming Languages</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700 font-medium">Python</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700 font-medium">Java</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700 font-medium">C++</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700 font-medium">C</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI/ML Skills -->
+                <div class="bg-gradient-to-br from-secondary/5 to-secondary/10 p-8 rounded-xl shadow-lg animate-slide-up">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-secondary text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-dark">AI/ML & Data Science</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div class="text-sm font-semibold text-gray-700">PyTorch</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div class="text-sm font-semibold text-gray-700">TensorFlow</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div class="text-sm font-semibold text-gray-700">Scikit-learn</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div class="text-sm font-semibold text-gray-700">Pandas</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div class="text-sm font-semibold text-gray-700">NumPy</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div class="text-sm font-semibold text-gray-700">Matplotlib</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div class="text-sm font-semibold text-gray-700">Seaborn</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div class="text-sm font-semibold text-gray-700">HuggingFace</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Frameworks -->
+                <div class="bg-gradient-to-br from-accent/5 to-accent/10 p-8 rounded-xl shadow-lg animate-slide-up">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-tools text-accent text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-dark">Tools & Frameworks</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-gray-700">Git & Version Control</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-gray-700">FastAPI & Pydantic</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-gray-700">Streamlit</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-gray-700">LangGraph</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-gray-700">Ollama & LLMs</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-gray-700">Docker</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-gray-700">RDBMS</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-gray-700">Azure DevOps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-6">Education & Certifications</h2>
+                <p class="text-xl text-gray-custom max-w-3xl mx-auto">
+                    Continuous learning journey in computer science and emerging technologies
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Education -->
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-bold text-dark mb-8">Education</h3>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-graduation-cap text-primary text-2xl"></i>
+                            </div>
+                            
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold text-dark mb-2">Bachelor of Computer Applications (BCA)</h4>
+                                <p class="text-primary font-semibold mb-2">Institute of Engineering and Management, Kolkata</p>
+                                <p class="text-gray-600 mb-4">Expected Graduation: 2026</p>
+                                
+                                <div class="space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                        <span class="text-gray-600">Comprehensive computer science curriculum</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                        <span class="text-gray-600">Specialized in data structures and algorithms</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                        <span class="text-gray-600">Focus on AI/ML and data science applications</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certifications -->
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-bold text-dark mb-8">Certifications</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fab fa-microsoft text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark">Azure DevOps for Beginners</h4>
+                                    <p class="text-gray-600">LinkedIn Learning • Aug 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-robot text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark">Becoming an AI-First Product Leader</h4>
+                                    <p class="text-gray-600">LinkedIn Learning • Dec 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-brain text-secondary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark">Introduction to Artificial Intelligence</h4>
+                                    <p class="text-gray-600">LinkedIn Learning • Dec 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl">
+                        <h4 class="font-bold text-dark mb-4">Additional Skills & Expertise</h4>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div class="text-gray-700">• Deep Learning</div>
+                            <div class="text-gray-700">• NLP</div>
+                            <div class="text-gray-700">• Generative AI</div>
+                            <div class="text-gray-700">• Transformers</div>
+                            <div class="text-gray-700">• Data Analysis</div>
+                            <div class="text-gray-700">• Web Scraping</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Connect</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Ready to collaborate on exciting AI/ML projects or discuss opportunities in data science
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        I'm always interested in discussing new opportunities, collaborating on innovative projects, 
+                        or sharing insights about the latest developments in AI and machine learning. 
+                        Feel free to reach out!
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-envelope text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-300">Email</p>
+                                <a href="mailto:deeppodder57@gmail.com" class="text-white font-semibold hover:text-primary transition-colors">
+                                    deeppodder57@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-phone text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-300">Phone</p>
+                                <a href="tel:+916289622872" class="text-white font-semibold hover:text-primary transition-colors">
+                                    +91 6289622872
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-300">Location</p>
+                                <p class="text-white font-semibold">Kolkata, India</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-6 mt-8">
+                        <a href="https://github.com/unknown-spec10" target="_blank" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/deeppodder2005" target="_blank" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="animate-slide-up">
+                    <form class="bg-dark-light p-8 rounded-xl shadow-lg" data-implementation="Should validate and submit contact form">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-300 text-sm font-semibold mb-2">First Name</label>
+                                <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-colors" placeholder="John" data-mock="true">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-sm font-semibold mb-2">Last Name</label>
+                                <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-colors" placeholder="Doe" data-mock="true">
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <label class="block text-gray-300 text-sm font-semibold mb-2">Email</label>
+                            <input type="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-colors" placeholder="john@example.com" data-mock="true">
+                        </div>
+                        
+                        <div class="mt-6">
+                            <label class="block text-gray-300 text-sm font-semibold mb-2">Subject</label>
+                            <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-colors" placeholder="Project Collaboration" data-mock="true">
+                        </div>
+                        
+                        <div class="mt-6">
+                            <label class="block text-gray-300 text-sm font-semibold mb-2">Message</label>
+                            <textarea rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-colors resize-none" placeholder="Tell me about your project or idea..." data-mock="true"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full mt-6 bg-primary hover:bg-blue-600 text-white py-4 rounded-lg font-semibold transition-colors duration-300 transform hover:scale-105" data-event="click:handleSubmit">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2024 Deep Podder. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminPanel" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-bold text-dark">Admin Panel</h2>
+                    <button onclick="toggleAdminPanel()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div class="flex space-x-4 mb-6">
+                    <button onclick="showProjectForm()" class="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                        <i class="fas fa-plus mr-2"></i>Add New Project
+                    </button>
+                    <button onclick="showProjectList()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                        <i class="fas fa-list mr-2"></i>Manage Projects
+                    </button>
+                </div>
+                
+                <!-- Project Form -->
+                <div id="projectForm" class="hidden">
+                    <h3 class="text-xl font-bold text-dark mb-4">Add/Edit Project</h3>
+                    <form class="space-y-4" data-implementation="Should handle project CRUD operations">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 text-sm font-semibold mb-2">Project Title</label>
+                                <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:outline-none" placeholder="Project Title" data-mock="true">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-semibold mb-2">Category</label>
+                                <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:outline-none" data-mock="true">
+                                    <option>Machine Learning</option>
+                                    <option>NLP</option>
+                                    <option>Generative AI</option>
+                                    <option>Data Science</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 text-sm font-semibold mb-2">Description</label>
+                            <textarea rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:outline-none" placeholder="Project description..." data-mock="true"></textarea>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 text-sm font-semibold mb-2">GitHub URL</label>
+                                <input type="url" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:outline-none" placeholder="https://github.com/..." data-mock="true">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-semibold mb-2">Live Demo URL</label>
+                                <input type="url" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:outline-none" placeholder="https://..." data-mock="true">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 text-sm font-semibold mb-2">Technologies (comma-separated)</label>
+                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:outline-none" placeholder="Python, PyTorch, Streamlit" data-mock="true">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 text-sm font-semibold mb-2">Project Image</label>
+                            <input type="file" accept="image/*" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:outline-none" data-implementation="Should handle image upload">
+                        </div>
+                        
+                        <div class="flex space-x-4 pt-4">
+                            <button type="submit" class="bg-success hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors" data-event="click:saveProject">
+                                Save Project
+                            </button>
+                            <button type="button" onclick="hideProjectForm()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Project List -->
+                <div id="projectList" class="hidden">
+                    <h3 class="text-xl font-bold text-dark mb-4">Manage Projects</h3>
+                    <div class="space-y-4" data-mock="true">
+                        <!-- @MAP: projects.map(project => ( -->
+                        <div class="border border-gray-200 rounded-lg p-4 flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-dark" data-bind="project.title">Twitter Sentiment Analysis</h4>
+                                <p class="text-gray-600" data-bind="project.category">NLP</p>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors" data-event="click:editProject">
+                                    <i class="fas fa-edit mr-1"></i>Edit
+                                </button>
+                                <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors" data-event="click:deleteProject">
+                                    <i class="fas fa-trash mr-1"></i>Delete
+                                </button>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // TODO: Implement business logic, API calls, or state management
+        
+        (function() {
+            // Mobile menu toggle
+            window.toggleMobileMenu = function() {
+                const menu = document.getElementById('mobileMenu');
+                menu.classList.toggle('hidden');
+            };
+            
+            // Admin panel toggle
+            window.toggleAdminPanel = function() {
+                const panel = document.getElementById('adminPanel');
+                panel.classList.toggle('hidden');
+            };
+            
+            // Project filtering
+            window.filterProjects = function(category) {
+                const cards = document.querySelectorAll('.project-card');
+                const buttons = document.querySelectorAll('.filter-btn');
+                
+                // Update button styles
+                buttons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-primary', 'text-white');
+                    btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+                });
+                
+                event.target.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+                event.target.classList.add('active', 'bg-primary', 'text-white');
+                
+                // Filter cards
+                cards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            };
+            
+            // Project details modal
+            window.viewProjectDetails = function(projectId) {
+                // TODO: Implement project details modal
+                alert(`Viewing project details for project ${projectId}`);
+            };
+            
+            // Admin panel functions
+            window.showProjectForm = function() {
+                document.getElementById('projectForm').classList.remove('hidden');
+                document.getElementById('projectList').classList.add('hidden');
+            };
+            
+            window.showProjectList = function() {
+                document.getElementById('projectList').classList.remove('hidden');
+                document.getElementById('projectForm').classList.add('hidden');
+            };
+            
+            window.hideProjectForm = function() {
+                document.getElementById('projectForm').classList.add('hidden');
+            };
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0s';
+                        entry.target.classList.add('animate-slide-up');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all sections
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        })();
+    </script>
+</body>
+</html>

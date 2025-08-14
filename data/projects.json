@@ -1,0 +1,87 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "title": "Twitter Sentiment Analysis",
+      "description": "Analyzed tweet sentiments using BERT, PyTorch, and HuggingFace transformers. Used TensorDataset, DataLoader, AdamW optimizer, and learning rate scheduler for model training.",
+      "technologies": [
+        "Python",
+        "PyTorch",
+        "BERT",
+        "HuggingFace",
+        "NLP"
+      ],
+      "github_link": "",
+      "demo_link": "",
+      "image": "",
+      "code_snippet": "# Sentiment analysis with BERT\nfrom transformers import BertTokenizer, BertForSequenceClassification\nimport torch\n\n# Load pre-trained model and tokenizer\ntokenizer = BertTokenizer.from_pretrained('bert-base-uncased')\nmodel = BertForSequenceClassification.from_pretrained('bert-base-uncased')\n\n# Tokenize and predict\ninputs = tokenizer(text, return_tensors='pt', padding=True, truncation=True)\nwith torch.no_grad():\n    outputs = model(**inputs)\n    predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)"
+    },
+    {
+      "id": "2",
+      "title": "RAG Application with Ollama and Streamlit",
+      "description": "Built a Retrieval-Augmented Generation (RAG) app using LLaMA models and Ollama. Developed a Streamlit-based UI for user-friendly query answering from custom datasets.",
+      "technologies": [
+        "Python",
+        "Streamlit",
+        "Ollama",
+        "LLaMA",
+        "RAG"
+      ],
+      "github_link": "",
+      "demo_link": "",
+      "image": "",
+      "code_snippet": "# RAG implementation with Ollama\nimport streamlit as st\nimport ollama\nfrom langchain.embeddings import OllamaEmbeddings\nfrom langchain.vectorstores import Chroma\n\n# Initialize embeddings and vector store\nembeddings = OllamaEmbeddings(model='llama2')\nvectorstore = Chroma(embedding_function=embeddings)\n\n# Query processing\nquery = st.text_input('Ask a question:')\nif query:\n    docs = vectorstore.similarity_search(query, k=3)\n    context = '\\n'.join([doc.page_content for doc in docs])\n    response = ollama.generate(model='llama2', prompt=f'Context: {context}\\nQuestion: {query}')\n    st.write(response['response'])"
+    },
+    {
+      "id": "3",
+      "title": "Stock Recommender using Agentic AI",
+      "description": "Created a stock recommendation engine using real-time data from Phi Data. Integrated ML models and intelligent agentic flows to generate actionable financial insights.",
+      "technologies": [
+        "Python",
+        "Agentic AI",
+        "Phi Data",
+        "Machine Learning",
+        "Financial Analysis"
+      ],
+      "github_link": "",
+      "demo_link": "",
+      "image": "",
+      "code_snippet": "# Stock recommendation with Agentic AI\nfrom phi.agent import Agent\nfrom phi.model.openai import OpenAIChat\nfrom phi.tools.yfinance import YFinanceTools\n\n# Create stock analysis agent\nstock_agent = Agent(\n    model=OpenAIChat(id='gpt-4'),\n    tools=[YFinanceTools(stock_price=True, analyst_recommendations=True)],\n    instructions=['Analyze stock performance and provide investment recommendations']\n)\n\n# Get stock recommendation\nresponse = stock_agent.run('Analyze AAPL stock and provide investment advice')\nprint(response.content)"
+    },
+    {
+      "id": "4",
+      "title": "Skill Gap Analyzer using Agentic AI",
+      "description": "Designed a tool to identify employee skill gaps using Agentic AI, LangGraph, and Streamlit. Utilized tools like PDFPlumber, pdf2image, Tesseract, and GLM4 for document parsing and skill assessment.",
+      "technologies": [
+        "Python",
+        "Agentic AI",
+        "LangGraph",
+        "Streamlit",
+        "OCR",
+        "NLP"
+      ],
+      "github_link": "",
+      "demo_link": "",
+      "image": "",
+      "code_snippet": "# Skill gap analysis with LangGraph\nfrom langgraph.graph import StateGraph\nfrom langchain.schema import BaseMessage\nimport pdfplumber\nfrom PIL import Image\nimport pytesseract\n\n# Define skill extraction workflow\ndef extract_text_from_pdf(file_path):\n    with pdfplumber.open(file_path) as pdf:\n        text = ''\n        for page in pdf.pages:\n            text += page.extract_text()\n    return text\n\n# Skill gap analysis agent\ndef analyze_skills(resume_text, job_requirements):\n    # AI-powered skill matching logic here\n    pass"
+    },
+    {
+      "id": "5",
+      "title": "PI/PHI Detector (Rally Ticket Integration)",
+      "description": "Designed and implemented a data privacy detection tool for identifying Personally Identifiable (PI) and Protected Health Information (PHI) within Rally ticket data. Automated data extraction from Rally using pyrally, streamlining ticket ingestion workflows.",
+      "technologies": [
+        "FastAPI",
+        "Pydantic",
+        "pyrally",
+        "Agentic AI",
+        "Ollama",
+        "LLMs",
+        "NLP"
+      ],
+      "github_link": "",
+      "demo_link": "",
+      "image": "",
+      "code_snippet": "# PI/PHI Detection with FastAPI\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel\nimport ollama\nimport re\n\napp = FastAPI()\n\nclass TicketData(BaseModel):\n    ticket_id: str\n    content: str\n    title: str\n\n@app.post('/analyze-privacy')\nasync def analyze_privacy_data(ticket: TicketData):\n    # Use Ollama LLM for PI/PHI detection\n    prompt = f'Analyze this text for PI/PHI data: {ticket.content}'\n    response = ollama.generate(model='llama2', prompt=prompt)\n    \n    # Regex patterns for common PI/PHI\n    email_pattern = r'\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b'\n    phone_pattern = r'\\b\\d{3}-\\d{3}-\\d{4}\\b'\n    \n    findings = {\n        'emails': re.findall(email_pattern, ticket.content),\n        'phones': re.findall(phone_pattern, ticket.content),\n        'ai_analysis': response['response']\n    }\n    \n    return findings"
+    }
+  ]
+}

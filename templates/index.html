@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ portfolio.personal.name }} - {{ portfolio.personal.title }}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">{{ portfolio.personal.name }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/download-resume">
+                            <i class="fas fa-download"></i> Resume
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin" target="_blank">
+                            <i class="fas fa-cog"></i> Admin
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="hero-content">
+                        <h1 class="display-3 fw-bold mb-4 text-info">{{ portfolio.personal.name }}</h1>
+                        <h2 class="h3 mb-4 text-light">{{ portfolio.personal.title }}</h2>
+                        <p class="lead mb-5">{{ portfolio.personal.objective }}</p>
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-info btn-lg me-3">
+                                <i class="fas fa-code"></i> View Projects
+                            </a>
+                            <a href="/download-resume" class="btn btn-outline-info btn-lg me-3">
+                                <i class="fas fa-download"></i> Download Resume
+                            </a>
+                            <a href="#contact" class="btn btn-outline-info btn-lg">
+                                <i class="fas fa-envelope"></i> Get In Touch
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg-animation"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="section-title text-center mb-5">
+                        <i class="fas fa-user text-info"></i> About Me
+                    </h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-info">
+                                        <i class="fas fa-graduation-cap"></i> Background
+                                    </h5>
+                                    <p class="card-text">{{ portfolio.personal.objective }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-info">
+                                        <i class="fas fa-map-marker-alt"></i> Location & Contact
+                                    </h5>
+                                    <p class="card-text">
+                                        <strong>Location:</strong> {{ portfolio.personal.location }}<br>
+                                        <strong>Phone:</strong> {{ portfolio.personal.phone }}<br>
+                                        <strong>Email:</strong> {{ portfolio.personal.email }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">
+                <i class="fas fa-laptop-code text-info"></i> Featured Projects
+            </h2>
+            <div class="row" id="projects-container">
+                {% for project in projects %}
+                <div class="col-lg-6 mb-4">
+                    <div class="card project-card h-100">
+                        {% if project.image %}
+                        <img src="{{ url_for('static', filename='uploads/' + project.image) }}" class="card-img-top" alt="{{ project.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title text-info">{{ project.title }}</h5>
+                            <p class="card-text">{{ project.description }}</p>
+                            
+                            <!-- Technologies -->
+                            <div class="mb-3">
+                                {% for tech in project.technologies %}
+                                <span class="badge bg-secondary me-1">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- View Code Button -->
+                            <div class="code-snippet mb-3">
+                                <a href="{{ portfolio.personal.github }}" target="_blank" class="btn btn-sm btn-outline-info">
+                                    <i class="fas fa-code"></i> View Code
+                                </a>
+                            </div>
+                            
+                            <!-- Links -->
+                            <div class="project-links">
+                                {% if project.github_link %}
+                                <a href="{{ project.github_link }}" class="btn btn-outline-info btn-sm me-2" target="_blank">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                                {% endif %}
+                                {% if project.demo_link %}
+                                <a href="{{ project.demo_link }}" class="btn btn-outline-info btn-sm" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">
+                <i class="fas fa-cogs text-info"></i> Technical Skills
+            </h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card skill-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-info">
+                                <i class="fas fa-code"></i> Programming
+                            </h5>
+                            <ul class="list-unstyled">
+                                {% for skill in portfolio.skills.programming %}
+                                <li><i class="fas fa-check text-success"></i> {{ skill }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card skill-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-info">
+                                <i class="fas fa-brain"></i> Data Science & AI
+                            </h5>
+                            <ul class="list-unstyled">
+                                {% for skill in portfolio.skills.data_science %}
+                                <li><i class="fas fa-check text-success"></i> {{ skill }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card skill-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-info">
+                                <i class="fas fa-tools"></i> Tools & Frameworks
+                            </h5>
+                            <ul class="list-unstyled">
+                                {% for skill in portfolio.skills.tools_frameworks %}
+                                <li><i class="fas fa-check text-success"></i> {{ skill }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card skill-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-info">
+                                <i class="fas fa-database"></i> Database
+                            </h5>
+                            <ul class="list-unstyled">
+                                {% for skill in portfolio.skills.database %}
+                                <li><i class="fas fa-check text-success"></i> {{ skill }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">
+                <i class="fas fa-graduation-cap text-info"></i> Education
+            </h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card education-card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="text-info">{{ portfolio.education.degree }}</h4>
+                                    <h6 class="text-muted">{{ portfolio.education.institution }}</h6>
+                                    <p class="mb-0">{{ portfolio.education.status }}: {{ portfolio.education.graduation_year }}</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="education-icon">
+                                        <i class="fas fa-university fa-3x text-info"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">
+                <i class="fas fa-certificate text-info"></i> Certifications
+            </h2>
+            <div class="row">
+                {% for cert in portfolio.certifications %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card certification-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-award fa-2x text-info mb-3"></i>
+                            <p class="card-text">{{ cert }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">
+                <i class="fas fa-envelope text-info"></i> Get In Touch
+            </h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card contact-card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="contact-item">
+                                        <i class="fas fa-envelope text-info"></i>
+                                        <div>
+                                            <h6>Email</h6>
+                                            <a href="mailto:{{ portfolio.personal.email }}">{{ portfolio.personal.email }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="contact-item">
+                                        <i class="fas fa-phone text-info"></i>
+                                        <div>
+                                            <h6>Phone</h6>
+                                            <a href="tel:{{ portfolio.personal.phone }}">{{ portfolio.personal.phone }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="contact-item">
+                                        <i class="fab fa-linkedin text-info"></i>
+                                        <div>
+                                            <h6>LinkedIn</h6>
+                                            <a href="{{ portfolio.personal.linkedin }}" target="_blank">View Profile</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="contact-item">
+                                        <i class="fab fa-github text-info"></i>
+                                        <div>
+                                            <h6>GitHub</h6>
+                                            <a href="{{ portfolio.personal.github }}" target="_blank">View Repositories</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2024 {{ portfolio.personal.name }}. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Prism.js for code highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

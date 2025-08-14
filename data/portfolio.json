@@ -1,0 +1,56 @@
+{
+  "personal": {
+    "name": "Deep Podder",
+    "title": "AI/ML Engineer",
+    "location": "Kolkata, India",
+    "phone": "+91 6289622872",
+    "email": "deeppodder57@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/deeppodder2005",
+    "github": "https://github.com/unknown-spec10",
+    "objective": "BCA graduate (2026) with a solid foundation in computer science and a strong passion for data science and AI. Skilled in Python, C, C++, Java, and DSA, with hands-on experience in machine learning, deep learning (PyTorch), NLP, and Generative AI. Seeking a data science internship where I can apply my skills to build impactful, data-driven solutions."
+  },
+  "education": {
+    "degree": "Bachelor of Computer Applications (BCA)",
+    "institution": "Institute of Engineering and Management, Kolkata",
+    "graduation_year": "2026",
+    "status": "Expected Graduation"
+  },
+  "skills": {
+    "programming": [
+      "Python",
+      "C",
+      "C++",
+      "Java",
+      "Data Structures and Algorithms (DSA)"
+    ],
+    "database": [
+      "RDBMS"
+    ],
+    "data_science": [
+      "Machine Learning (Regression, Classification, Clustering)",
+      "Deep Learning (PyTorch, CNNs, RNNs, LSTMs, Transformers)",
+      "Natural Language Processing (NLP)",
+      "Generative AI",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn",
+      "Matplotlib",
+      "Seaborn"
+    ],
+    "tools_frameworks": [
+      "TensorFlow",
+      "PyTorch",
+      "Git",
+      "FastAPI",
+      "Streamlit",
+      "LangGraph",
+      "Ollama",
+      "HuggingFace Transformers"
+    ]
+  },
+  "certifications": [
+    "Azure DevOps for Beginners \u2013 LinkedIn, Aug 2024",
+    "Becoming an AI-First Product Leader \u2013 LinkedIn, Dec 2023",
+    "Introduction to Artificial Intelligence \u2013 LinkedIn, Dec 2023"
+  ]
+}
