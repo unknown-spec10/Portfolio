@@ -166,11 +166,6 @@ def index():
     projects = load_json_data('projects.json')
     return render_template('index.html', portfolio=portfolio, projects=projects['projects'])
 
-@app.route('/admin')
-def admin():
-    """Admin panel for project management"""
-    projects = load_json_data('projects.json')
-    return render_template('admin.html', projects=projects['projects'])
 
 @app.route('/api/projects', methods=['GET'])
 def get_projects():
