@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Editorial profile information for a user.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "username": { "type": "string", "description": "Unique handle for the public URL." },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "tagline": { "type": "string" },
+        "philosophy": { "type": "string" },
+        "githubUrl": { "type": "string" },
+        "skills": { 
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "socials": {
+          "type": "object",
+          "properties": {
+            "linkedin": { "type": "string" },
+            "twitter": { "type": "string" },
+            "email": { "type": "string" }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "username", "displayName"]
+    },
+    "ProjectEntry": {
+      "title": "Project Entry",
+      "description": "An individual project within a portfolio.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "username": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "narrative": { "type": "string" },
+        "role": { "type": "string" },
+        "tags": { 
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "url": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "public"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents."
+    },
+    "/projects/{projectId}": {
+      "schema": "ProjectEntry",
+      "description": "Global project entries."
+    }
+  }
+}
