@@ -50,7 +50,7 @@ function mapGeminiErrorStatus(message: string): number {
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT || 3000);
   const GITHUB_README_TIMEOUT_MS = 15000;
 
   app.use(express.json());
